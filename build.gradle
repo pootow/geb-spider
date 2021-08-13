@@ -1,0 +1,29 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'us.zyqq'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    maven {
+        url "https://maven.aliyun.com/repository/public/"
+    }
+    maven {
+        url "https://mirrors.cloud.tencent.com/nexus/repository/maven-public/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.seleniumhq.selenium:selenium-support:3.141.59"
+    implementation "org.seleniumhq.selenium:selenium-chrome-driver:3.141.59"
+    implementation "org.gebish:geb-core:5.0"
+
+    implementation 'org.codehaus.groovy:groovy-all:3.0.8'
+}
+
+test {
+}
