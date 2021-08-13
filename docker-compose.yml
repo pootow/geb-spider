@@ -9,6 +9,7 @@ services:
       - "4445:4444"
 
   chrome:
+    scale: 3
     image: selenium/node-chrome:3.141.59-20210804
     volumes:
       - /dev/shm:/dev/shm
