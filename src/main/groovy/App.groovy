@@ -23,6 +23,7 @@ class Item {
     String dealCnt
     String shopName
     String url
+    String sellCnt
 }
 
 class App {
@@ -71,11 +72,10 @@ class App {
                             break
                     }
 
-                    println JsonOutput.toJson(item)
-
                     withNewWindow { itemDiv.$('div.title > a').click() } {
                         switch (item.market) {
                             case Market.TMall:
+                                extractTmall($(), item)
                                 break
                             case Market.Taobao:
                                 extractTaobao($(), item)
@@ -85,6 +85,9 @@ class App {
                                 break
                         }
                     }
+
+                    println JsonOutput.toJson(item)
+
                 }
 
             }
@@ -95,7 +98,12 @@ class App {
     }
 
 
-    void extractTaobao(Navigator navigator, Item item) {
+    static void extractTaobao(Navigator navigator, Item item) {
+        item.sellCnt = navigator.$('.tm-ind-sellCount .tm-count').text()
+    }
+
+    static void extractTmall(Navigator navigator, Item item) {
+        item.sellCnt = navigator.$('#J_SellCounter').text()
 
     }
 }
