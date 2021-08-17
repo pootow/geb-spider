@@ -1,6 +1,17 @@
 plugins {
     id 'groovy'
     id 'java'
+    id 'application'
+}
+
+apply plugin: 'java'
+
+ext {
+    javaMainClass = 'App'
+}
+
+application {
+    mainClassName = javaMainClass
 }
 
 group 'us.zyqq'
